@@ -1,12 +1,18 @@
 package com.example.newsapi.service;
 
 import com.example.newsapi.model.NewsDto;
+import com.example.newsapi.web.NewsClient;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class NewsService {
 
+    private final NewsClient newsClient;
+
     public NewsDto getNews() {
-        return null;
+
+        return newsClient.getNews();
     }
 }
