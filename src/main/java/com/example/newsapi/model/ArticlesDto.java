@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.net.URL;
 
 @Getter
-class ArticlesDto {
+public class ArticlesDto {
     private String author;
     private String title;
     private String description;

@@ -1,5 +1,6 @@
 package com.example.newsapi.service;
 
+import com.example.newsapi.model.ArticlesDto;
 import com.example.newsapi.model.NewsDto;
 import com.example.newsapi.web.NewsClient;
 import lombok.AllArgsConstructor;
@@ -14,5 +15,9 @@ public class NewsService {
     public NewsDto getNews() {
 
         return newsClient.getNews();
+    }
+
+    public void saveNewsToFile(Integer id) {
+        newsClient.saveToFile(id);
     }
 }

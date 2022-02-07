@@ -1,10 +1,10 @@
 package com.example.newsapi.controller;
 
+import com.example.newsapi.model.ArticlesDto;
 import com.example.newsapi.model.NewsDto;
 import com.example.newsapi.service.NewsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,5 +15,10 @@ class NewsController {
     @GetMapping("/news")
     public NewsDto getNews() {
         return service.getNews();
+    }
+
+    @PostMapping("/news/{id}")
+    public void saveNewsToFile(@PathVariable Integer id) {
+        service.saveNewsToFile(id);
     }
 }
