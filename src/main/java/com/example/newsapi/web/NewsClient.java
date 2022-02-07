@@ -25,9 +25,7 @@ public class NewsClient {
     public void saveToFile(Integer id) {
         try {
             String fileContent = getNews().getArticles()[id].getDescription() + " " + getNews().getArticles()[id].getUrl();
-            String fileTitle = getNews().getArticles()[id].getAuthor().substring(0, 4) + ""
-                    + getNews().getArticles()[id].getTitle().substring(0, 4) + ""
-            + getNews().getArticles()[id].getDescription().substring(0, 4);
+            String fileTitle = getString(id);
             String path = "C:/catalog/" + fileTitle + ".txt";
             Files.writeString(Paths.get(path), fileContent, StandardOpenOption.CREATE);
         } catch (IOException exception) {
@@ -35,4 +33,27 @@ public class NewsClient {
         }
     }
 
+    private String getString(Integer id) {
+        String author = "";
+        String title = "";
+        String description = "";
+        if (getNews().getArticles()[id].getAuthor() == null) {
+            author += "NoN";
+        } else {
+            author += getNews().getArticles()[id].getAuthor().substring(0, 4);
+        }
+        if (getNews().getArticles()[id].getTitle() == null) {
+            title += "NoN";
+        } else {
+            title += getNews().getArticles()[id].getTitle().substring(0, 4);
+        }
+        if (getNews().getArticles()[id].getDescription() == null) {
+            description += "NoN";
+        } else {
+            description += getNews().getArticles()[id].getDescription().substring(0, 4);
+        }
+        return author + "_" + title + "_" + description.replace(" ", "");
+    }
+
+    // napisać regexa do pomijania znaków specjalnych i niedozwolonych
 }
