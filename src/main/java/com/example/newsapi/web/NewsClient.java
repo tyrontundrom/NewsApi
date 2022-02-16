@@ -22,11 +22,15 @@ public class NewsClient {
         return newsDto;
     }
 
+    // dodac odpowiedz gdzie znajduje sie plik
     public void saveToFile(Integer id) {
         try {
             String fileContent = getNews().getArticles()[id].getDescription() + " " + getNews().getArticles()[id].getUrl();
             String fileTitle = getString(id);
-            String path = "C:/catalog/" + fileTitle + ".txt";
+            File file = new File(System.getProperty("user.home") + File.separator + "business_articles_from_poland");
+            file.mkdir();
+//            String path = "C:/catalog/" + fileTitle + ".txt";
+            String path =  file + "/" + fileTitle + ".txt";
             Files.writeString(Paths.get(path), fileContent, StandardOpenOption.CREATE);
         } catch (IOException exception) {
             exception.printStackTrace();
